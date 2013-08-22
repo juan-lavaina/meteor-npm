@@ -20,14 +20,10 @@ Package.describe({
 });
 
 Package.on_use(function (api, where) {
-  var isNewerMeteor = fs.readFileSync('./.meteor/packages', 'utf8').match(/\nstandard-app-packages/);
-  if(isNewerMeteor) {
-    api.add_files(['index.js', '../../packages.json'], 'server');
-  } else {
     api.add_files(['index.js'], 'server');
-  }
 });
 
 Package.on_test(function (api) {
+    api.use(["tinytest", "test-helpers"]);
   api.add_files(['index.js', 'test.js'], 'server');
 });
